@@ -10,9 +10,17 @@ services:
 
 before_install:
   - docker build . -t stock-symbol-service:0.1
-  - docker images
   - docker run -d -p 127.0.0.1:8080:5000 stock-symbol-service:0.1
 
 script:
   - bash test.sh
 
+after_success:
+  - pip install awscli
+  - export PATH=$PATH:$HOME/.local/bin
+
+deploy:
+  provider: script
+  script: bash docker_push.sh
+  on:
+    branch: master
