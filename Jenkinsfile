@@ -2,9 +2,7 @@ pipeline {
   agent any
   stages {
     stage('Build') {
-      steps {
-        // tbc...
-      } 
+      sh("echo testing Build stage")
     }
   }
 }  
