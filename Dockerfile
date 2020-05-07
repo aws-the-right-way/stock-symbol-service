@@ -21,5 +21,7 @@ RUN \
     && apk add bash-completion \
     && pip3 install --trusted-host pypi.python.org -r requirements.txt
 
+EXPOSE 5000
+
 CMD ["python3", "app/app.py"]
 

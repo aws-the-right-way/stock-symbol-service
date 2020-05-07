@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: stock-symbol-service
+  labels:
+    app: backend
+spec:
+  replicas: 3
+  minReadySeconds: 10
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+        - name: stock-symbol-service
+          image: 740966400558.dkr.ecr.eu-central-1.amazonaws.com/stock-symbol-service:1.0
+          ports:
+            - containerPort: 5000
+          livenessProbe:
+            httpGet:
+              path: /api/ping
+              port: 5000
+            initialDelaySeconds: 15
