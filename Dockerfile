@@ -22,6 +22,7 @@ RUN \
     && pip3 install --trusted-host pypi.python.org -r requirements.txt
 
 EXPOSE 5000
+EXPOSE 5001
 
 CMD ["python3", "app/app.py"]
 
